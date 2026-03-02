@@ -21,8 +21,10 @@ import random
 num_skiers = int(input("Enter the number of skiers: "))
 
 total_ski_pairs = 0
-current_ski_pairs_in_gondola = 0
 gondola_count = 1
+current_ski_pairs_in_gondola = 0
+max_ski_pairs = 0 # tracks the highest number of skis in gondola
+gondola_with_max_skis = 1
 
 for i in range(num_skiers):
     ski_pairs = random.randint(1, 3)
@@ -34,10 +36,23 @@ for i in range(num_skiers):
         print(f"Gondola {gondola_count} is full: {current_ski_pairs_in_gondola} pairs of skis")
         print()
 
+        # as the gondola is full, next skier is entering next gondola
+        # but before that we want to cache the max_ski_pairs and gondola_with_max_skis
+        if current_ski_pairs_in_gondola > max_ski_pairs:
+            max_ski_pairs = current_ski_pairs_in_gondola
+            gondola_with_max_skis = gondola_count
+
+        # skier is entering next gondola
         gondola_count += 1
         current_ski_pairs_in_gondola = ski_pairs
+
     else:
         current_ski_pairs_in_gondola += ski_pairs
 
-
-print(f"Total number of ski pairs: {total_ski_pairs}")
+print()
+print("\t-- SUMMARY --")
+print(f"\tNumber of skiers: {num_skiers}")
+print(f"\tTotal number of ski pairs: {total_ski_pairs}")
+print(f"\tGondola with the most skis: {gondola_with_max_skis}")
+print(f"\tMaximum ski pairs in gondola: {max_ski_pairs}")
+print(f"\tTotal number of gondolas needed: {gondola_count}")
