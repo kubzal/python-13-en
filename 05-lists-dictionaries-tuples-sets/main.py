@@ -188,3 +188,59 @@ print()
 my_dict["first_name"] = "Steven"
 
 print(my_dict)
+
+my_dict["firstname"] = "Jakub"
+
+print(my_dict)
+
+# TUPLES
+tuple1 = ()
+tuple2 = tuple()
+
+tuple3 = (1, 2, 3, True, "string as well")
+tuple4 = 4, 5, 6
+tuple5 = 100,
+
+tuple_of_tuples = (tuple1, tuple2, tuple3, tuple4, tuple5)
+
+for tup in tuple_of_tuples:
+    print(tup, type(tup), len(tup))
+
+print(tuple3[3])
+
+# we cannnot append tuples
+# tuple_of_tuples.append(1)
+
+# we cannot remove any element of a tuple
+# tuple4.pop()
+
+for key, value in dict3.items():
+    print(f"Key: {key}, Value: {value}")
+
+print()
+
+for tuple_iterator in dict3.items():
+    # print(f"Key: {key}, Value: {value}")
+    print(tuple_iterator, type(tuple_iterator))
+
+    print(f"Key: {tuple_iterator[0]}, Value: {tuple_iterator[1]}")
+
+    key, value = tuple_iterator
+    print(f"Key: {key}, Value: {value}")
+    print()
+
+# SETS
+set1 = {}
+set2 = set()
+
+print(set1, type(set1)) # acctually it's a dictionary
+print(set2, type(set2))
+
+set3 = {100, 1, 3, 4, 7, True, "hello", 3.14, 1, 2, 3, True, "hello"}
+print(set3, type(set3)) # now it's a set :)
+
+list_of_dupicated_values = [1001, 1002, 1001, 1002, 1001, 1003]
+
+print(list_of_dupicated_values, type(list_of_dupicated_values), len(list_of_dupicated_values))
+set_of_values = set(list_of_dupicated_values)
+print(set_of_values, type(set_of_values), len(set_of_values))
