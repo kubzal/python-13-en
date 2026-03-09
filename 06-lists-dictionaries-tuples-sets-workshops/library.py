@@ -10,9 +10,20 @@
 # [v] AVAILABILITY - Checking if a given book is available in the library
 # [v] UNIQUE - Displaying the number of unique titles in the library
 # [v] COUNT - Displaying the total number of books (volumes) in the library
-# [] HISTORY - Displaying the history of all operations on books
+# [v] HISTORY - Displaying the history of all operations on books
 # [v] HELP - Displaying available commands
-# [v] EXIT - Ending the program
+# [v]  - Ending the program
+
+KNOWN_COMMANDS = [
+    "ADD",
+    "BORROW",
+    "AVAILABILITY",
+    "UNIQUE",
+    "COUNT",
+    "HISTORY",
+    "HELP",
+    "EXIT",
+]
 
 books = {
     "Harry Potter": 3,
@@ -22,9 +33,15 @@ books = {
     "Glucose Revolution": 2,
 }
 
+history = list()  # other option of setting up an empty list --> []
+
 while True:
     print()
     command = input("Enter command: ").upper()
+
+    if command in KNOWN_COMMANDS:
+        history.append(command)
+
     print(f"Typed command: {command} \n")
 
     if command == "EXIT":
@@ -54,23 +71,25 @@ while True:
         if title in books and books[title] >= quantity:
             # we can borrow the book
             books[title] -= quantity
-            print(f"Borrowed book: \"{title}\", quantity: {quantity}")
+            print(f'Borrowed book: "{title}", quantity: {quantity}')
         else:
-            print(f"Not enough copies of the book \"{title}\" or it is not in the library.")
+            print(
+                f'Not enough copies of the book "{title}" or it is not in the library.'
+            )
 
     elif command == "BOOKS":
         if books:
             print("List of books and number of available copies:")
             for title, quantity in books.items():
-                print(f" - \"{title}\": {quantity} pcs.")
+                print(f' - "{title}": {quantity} pcs.')
 
     elif command == "AVAILABILITY":
         print("Check if the book is available.\n")
         title = input("Enter the book title: ")
         if title in books:
-            print(f"Book \"{title}\" is available, quantity: {books[title]} pcs.")
+            print(f'Book "{title}" is available, quantity: {books[title]} pcs.')
         else:
-            print(f"Book \"{title}\" is not available.")
+            print(f'Book "{title}" is not available.')
 
     elif command == "UNIQUE":
         print("Check unique number of all titles.\n")
@@ -84,6 +103,8 @@ while True:
 
     elif command == "HISTORY":
         print("Commands history: \n")
+        for order, item in enumerate(history):
+            print(f"{order+1}. {item}")
 
     elif command == "HELP":
         print("""List of available commands:
@@ -99,6 +120,6 @@ while True:
         """)
 
     else:
-        print("Unknown command. Type 'HELP' to display the lsit of commands.")
+        print("Unknown command. Type 'HELP' to display the list of commands.")
 
 print("The end of the program.")
