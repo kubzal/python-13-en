@@ -3,11 +3,10 @@
 #    - Options to add:
 #      -> Manager (first name, last name, department, salary)
 #      -> Employee (first name, last name, department, position, salary)
-#      -> Board (placeholder, no details)
 # 2. Manage:
 #    - Position: display employees at a given position
 #    - Subordinates: display employees managed by a selected manager
-#    - Balance: display the total salary of all employees
+#    - Balance: display the total salary of all employees and managers
 # 3. Exit: the 'exit' option ends the program.
 
 class Manager:
@@ -26,7 +25,7 @@ class Employee:
         self.salary = salary
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.department})"
+        return f"{self.first_name} {self.last_name} - {self.position} ({self.department})"
 
 managers = []
 employees = []
@@ -49,6 +48,40 @@ def input_employee_data():
 
     new_employee = Employee(first_name, last_name, department, position, salary)
     return new_employee
+
+def list_subordinates():
+    manager_first_name = input("Enter manager's first name: ")
+    manager_last_name = input("Enter manager's last name: ")
+
+    for manager in managers:
+        if manager.first_name == manager_first_name and manager.last_name == manager_last_name:
+            for employee in employees:
+                if employee.department == manager.department:
+                    print(employee)
+
+def list_employees_position():
+    print("List employees on the position:")
+
+    position = input("Enter position: ")
+
+    for employee in employees:
+        if employee.position == position:
+            print(employee)
+
+def display_balance():
+    total_salary_employees = 0.0
+    total_salary_managers = 0.0
+
+    for employee in employees:
+        total_salary_employees += employee.salary
+
+    for manager in managers:
+        total_salary_managers += manager.salary
+
+    print(f"Salary of all employees: {total_salary_employees} PLN")
+    print(f"Salary of all managers: {total_salary_managers} PLN")
+    print()
+    print(f"Salary of all employees and managers: {total_salary_employees + total_salary_managers} PLN")
 
 while True:
     action = input("What do you want to do? [create, manage, exit]: ").lower()
@@ -86,22 +119,16 @@ while True:
                 break
 
             elif manage_action == "position":
-                pass
+                list_employees_position()
 
             elif manage_action == "subordinates":
                 print("List manager's suborinates")
 
-                manager_first_name = input("Enter manager's first name: ")
-                manager_last_name = input("Enter manager's last name: ")
-
-                for manager in managers:
-                    if manager.first_name == manager_first_name and manager.last_name == manager_last_name:
-                        for employee in employees:
-                            if employee.department == manager.department:
-                                print(employee)
+                list_subordinates()
 
             elif manage_action == "balance":
-                pass
+                print("Balance:")
+                display_balance()
 
             else:
                 print("Invalid manage action")
