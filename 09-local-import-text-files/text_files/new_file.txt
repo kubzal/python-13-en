@@ -1,0 +1,4 @@
+Hi 
+My name is Jakub
+I am a Python mentor at Future Collars
+Nice to meet you!
