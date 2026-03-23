@@ -23,10 +23,9 @@ from utils.functions import (
     list_all_books,
     borrow_book,
     add_book,
-    load_books
+    load_books,
+    add_command_to_history
 )
-
-from utils.constants import KNOWN_COMMANDS
 
 books = load_books()
 history = list()  # other option of setting up an empty list --> []
@@ -35,8 +34,7 @@ while True:
     print()
     command = input("Enter command: ").upper()
 
-    if command in KNOWN_COMMANDS:
-        history.append(command)
+    history = add_command_to_history(command, history)
 
     print(f"Typed command: {command} \n")
 

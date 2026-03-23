@@ -1,3 +1,5 @@
+from .constants import KNOWN_COMMANDS
+
 def display_help():
     print("""List of available commands:
     1. ADD - Adding new books to the library
@@ -87,3 +89,9 @@ def add_book(books):
 
     update_books(books)
     return books
+
+def add_command_to_history(command, history):
+    if command in KNOWN_COMMANDS:
+        history.append(command)
+
+    return history
