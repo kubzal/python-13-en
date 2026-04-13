@@ -5,13 +5,19 @@ class Vehicle:
         self.model = model
 
     def start(self):
-        print(f"Vehicle {self.brand} {self.model} has been started.")
+        print(f"{self.__class__.__name__} {self.brand} {self.model} has been started.")
 
     def stop(self):
-        print(f"Vehicle {self.brand} {self.model} has been stopped.")
+        print(f"{self.__class__.__name__} {self.brand} {self.model} has been stopped.")
 
 # Derived classes
 class Car(Vehicle):
+    pass
+
+class Motorcycle(Vehicle):
+    pass
+
+class Bicycle(Vehicle):
     pass
 
 # Creating objects
