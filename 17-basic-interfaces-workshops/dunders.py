@@ -34,6 +34,50 @@ class ShoppingCart:
     def __len__(self):
         return sum(product.quantity for product in self.items.values())
 
+    def __lt__(self, other):
+        return isinstance(other, ShoppingCart) and float(self) < float(other)
+
+    def __le__(self, other):
+        return isinstance(other, ShoppingCart) and float(self) <= float(other)
+
+    def __gt__(self, other):
+        return isinstance(other, ShoppingCart) and float(self) > float(other)
+
+    def __ge__(self, other):
+        return isinstance(other, ShoppingCart) and float(self) >= float(other)
+
+    def __eq__(self, other):
+        return isinstance(other ,ShoppingCart) and float(self) == float(other)
+
+    def __iter__(self):
+        return iter(self.items.values())
+
+    def __add__(self, other):
+        if isinstance(other, ShoppingCart):
+            new_cart = ShoppingCart()
+            for product in self:
+                new_cart.add_product(product)
+            for product in other:
+                new_cart.add_product(product)
+            return new_cart
+        raise TypeError("Can only add another ShoppingCart instance.")
+
+    def __lshift__(self, product_name: str):
+        """Delete product from a cart using << operator"""
+        if product_name in self.items:
+            del self.items[product_name]
+        return self
+
+    def __getitem__(self, item):
+        return self.items[item]
+
+    def __contains__(self, item):
+        return item in self.items
+
+    def __call__(self):
+        print("Shopping cart contents:")
+        print(self)
+
 # Example
 cart1 = ShoppingCart()
 cart1 >> Product(name = "Apple", price = 2.5, quantity = 4)
@@ -57,39 +101,44 @@ print(f"TOTAL value of the cart 2: {float(cart2)} PLN")
 print(f"Number of products in the cart 2: {len(cart2)}")
 print()
 
-# # Compare two carts
-# print(f"Is the cart 1 cheaper than the cart 2? {cart1 < cart2}")
-# print(f"Is the cart 1 more expensive than cart 2? {cart1 > cart2}")
-# print(f"Is the cart 1 the same value as the cart 2? {cart1 == cart2}")
-#
-# # Join carts
-# cart3 = cart1 + cart2
-# print(f"What is in the joined cart (cart 3):")
-# print(cart3)
-# print(f"TOTAL value of the cart 3: {float(cart3)} PLN")
-# print()
-#
-# # Remove product from the cart
-# item_to_remove = "Apple" # that might be input()
-# cart1 << item_to_remove
-# print(f"What is in the cart 1 after removing {item_to_remove}:")
-# print(cart1)
-# print()
-#
-# # Displaying the quantity of product in the cart
-# item_to_check = "Banana" # that might be input()
-# print(f"Number of {item_to_check} in the cart 1: {cart1[item_to_check]}")
-# print()
-#
-# # Iteration through products inside any cart
-# print("Iteration through products in the cart 3:")
-# for product in cart3:
-#     print(product)
-#
-#
-# # Check if the product is inside the cart
-# product_to_check = "Grapes"
-# print(f"Do we have grapes in the cart 3? {product_to_check in cart3}")
-#
-# # Calling the cart
-# cart3()
+# Compare two carts
+print(f"Cart 1 value: {float(cart1)}")
+print(f"Cart 2 value: {float(cart2)}")
+print(f"Is the cart 1 cheaper than the cart 2? {cart1 < cart2}")
+print(f"Is the cart 1 cheaper (or equal) than the cart 2? {cart1 <= cart2}")
+print(f"Is the cart 1 more expensive than cart 2? {cart1 > cart2}")
+print(f"Is the cart 1 more expensive (or equal) than cart 2? {cart1 >= cart2}")
+print(f"Is the cart 1 the same value as the cart 2? {cart1 == cart2}")
+print()
+
+# Join carts
+cart3 = cart1 + cart2
+print(f"What is in the joined cart (cart 3):")
+print(cart3)
+print(f"TOTAL value of the cart 3: {float(cart3)} PLN")
+print()
+
+# Remove product from the cart
+item_to_remove = "Apple" # that might be input()
+cart1 << item_to_remove
+print(f"What is in the cart 1 after removing {item_to_remove}:")
+print(cart1)
+print()
+
+# Displaying the quantity of product in the cart
+item_to_check = "Banana" # that might be input()
+print(f"Number of {item_to_check} in the cart 1: {cart1[item_to_check]}")
+print()
+
+# Iteration through products inside any cart
+print("Iteration through products in the cart 3:")
+for product in cart3:
+    print(product)
+
+# Check if the product is inside the cart
+product_to_check = "Grapes" # input()
+print(f"Do we have grapes in the cart 3? {product_to_check in cart3}")
+print()
+
+# Calling the cart
+cart3()
