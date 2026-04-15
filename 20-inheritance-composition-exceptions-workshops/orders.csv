@@ -1,0 +1,16 @@
+Order ID;Product Name;Quantity;Price;Order Type;Buyer Name;Phone;Email;Shipping Address;Additional Info
+1;Laptop;1;4500;Physical;John Smith;789123456;john.smith@example.com;5 Main Street, 00-123 Warsaw;
+2;E-book;1;30;Digital;Emma Johnson;601234567;emma.johnson@example.com;;www.ebooklink.com/book
+3;Online Course: Python;1;150;Subscription;Christopher Brown;500500500;christopher.brown@example.com;;www.onlinecourse.com/python - 6 months
+4;Smartphone;2;3200;Physical;Olivia Taylor;600600600;olivia.taylor@example.com;10 Willow Lane, 00-234 Warsaw;
+5;On-Demand Music;1;40;Digital;Daniel Wilson;501501501;daniel.wilson@example.com;;www.musiclink.com/album
+6;Wireless Headphones;1;250;Physical;Sophia Miller;602602602;sophia.miller@example.com;15 Orchard Street, 00-345 Krakow;
+7;Online Movie;1;15;Digital;Thomas Anderson;603603603;thomas.anderson@example.com;;www.onlinemovie.com/movie
+8;Magazine Subscription;1;80;Subscription;Mia Davis;604604604;mia.davis@example.com;;www.magazineonline.com/magazine - 12 months
+9;Book;3;90;Physical;Robert Martinez;605605605;robert.martinez@example.com;8 Oak Street, 00-456 Gdansk;
+10;Online Course: Frontend;1;300;Subscription;Emily White;606606606;emily.white@example.com;;www.onlinecourse.com/frontend - 6 months
+11;Game Console;1;2200;Physical;Michael Harris;607607607;michael.harris@example.com;3 Birch Road, 00-567 Lodz;
+12;Tutorial: Photography;1;50;Digital;Alice Clark;608608608;alice.clark@example.com;;www.tutorial.com/photography
+13;Yoga Mat;2;120;Physical;Grace Lewis;609609609;grace.lewis@example.com;18 Fir Street, 00-678 Poznan;
+14;Music Streaming;1;100;Subscription;Peter Walker;610610610;peter.walker@example.com;;www.musicstreaming.com/streaming - 12 months
+15;Sports Watch;1;600;Physical;Chloe Hall;611611611;chloe.hall@example.com;25 Cherry Avenue, 00-789 Szczecin;
