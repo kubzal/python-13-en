@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <style>
+        body {background-color: lightpink}
+        h1 {font-family: "Comic Sans MS", "Comic Sans"; color: red}
+        p, label {font-family: "Comic Sans MS", "Comic Sans"; color: green}
+    </style>
+</head>
+<body>
+    <h1>Search!</h1>
+    <p>
+        <form action="http://127.0.0.1:5000/search" method="get">
+        <label for="query">Type any phrase: </label>
+        <input type="text" name="query" id="query" placeholder="Type phrase..." required>
+        <button type="submit">Search</button>
+        </form>
+    </p>
+    {% if query %}
+    <p>
+        {{ query }}
+    </p>
+    {% endif %}
+</body>
+</html>

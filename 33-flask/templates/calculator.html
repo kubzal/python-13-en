@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <style>
+        body {background-color: lightpink}
+        h1 {font-family: "Comic Sans MS", "Comic Sans"; color: red}
+        p, label {font-family: "Comic Sans MS", "Comic Sans"; color: green}
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <p>
+        <form action="http://127.0.0.1:5000/calculator" method="get">
+        <input type="number" name="number1" id="number1" placeholder="Number 1" min="1" required>
+        <input type="number" name="number2" id="number2" placeholder="Number 2" min="1" required>
+        <select name="operation" id="operation">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <button type="submit">Calculate</button>
+        </form>
+    </p>
+    {% if result %}
+    <p>
+        {{ result }}
+    </p>
+    {% endif %}
+</body>
+</html>
