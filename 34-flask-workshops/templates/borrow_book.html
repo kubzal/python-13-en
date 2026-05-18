@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Add books</h2>
+<h2>Borrow books</h2>
 <form action="" method="POST">
   <div class="form-group">
     <label for="title">Book title:</label>
     <input type="text" id="title" name="title" class="form-input" placeholder="Enter the book title" required>
   </div>
   <div class="form-group">
-    <label for="author">Book author:</label>
+    <label for="author">Author:</label>
     <input type="text" id="author" name="author" class="form-input" placeholder="Enter the book author" required>
   </div>
   <div class="form-group">
-    <label for="book_count">Quantity:</label>
-    <input type="number" id="book_count" name="book_count" class="form-input" placeholder="Quantity" min="1" required>
+    <label for="book_count">Qunatity:</label>
+    <input type="number" id="book_count" name="book_count" class="form-input" placeholder="Quantity" min="1" max="100" required>
   </div>
-  <button type="submit" class="btn btn-primary">Add book</button>
+  <button type="submit" class="btn btn-primary">Borrow books</button>
 </form>
 {% endblock %}

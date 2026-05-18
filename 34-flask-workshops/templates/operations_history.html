@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Operations history</h2>
+<ul>
+  {% for operation in history %}
+  <li>{{ operation }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
