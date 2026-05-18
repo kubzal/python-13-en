@@ -1,0 +1,53 @@
+<!-- templates/index.html -->
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="panel">
+    <div class="panel-header">
+        <div class="panel-title h4">Your Tasks</div>
+    </div>
+    <div class="panel-body">
+        {% if tasks %}
+            <div class="task-list">
+                {% for task in tasks %}
+                    <div class="tile my-2 {% if task.completed %}bg-gray{% endif %}">
+                        <div class="tile-icon">
+                            <form method="POST" action="{{ url_for('toggle_task', task_id=task.id) }}">
+                                <label class="form-checkbox">
+                                    <input type="checkbox" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                                    <i class="form-icon"></i>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="tile-content">
+                            <p class="tile-title {% if task.completed %}text-gray{% endif %}">{{ task.title }}</p>
+                            <p class="tile-subtitle">{{ task.description }}</p>
+                            {% if task.due_date %}
+                                <small class="label">Due: {{ task.due_date.strftime('%Y-%m-%d') }}</small>
+                            {% endif %}
+                        </div>
+                        <div class="tile-action">
+                            <form method="POST" action="{{ url_for('delete_task', task_id=task.id) }}">
+                                <button class="btn btn-error btn-sm" type="submit">
+                                    <i class="icon icon-delete"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty">
+                <div class="empty-icon">
+                    <i class="icon icon-3x icon-message"></i>
+                </div>
+                <p class="empty-title h5">No tasks yet</p>
+                <p class="empty-subtitle">Create your first task to get started</p>
+                <div class="empty-action">
+                    <a href="{{ url_for('new_task') }}" class="btn btn-primary">New Task</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

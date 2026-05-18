@@ -1,0 +1,33 @@
+<!-- templates/new_task.html -->
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="panel">
+    <div class="panel-header">
+        <div class="panel-title h4">Create New Task</div>
+    </div>
+    <div class="panel-body">
+        <form method="POST">
+            <div class="form-group">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-input" type="text" id="title" name="title" placeholder="Enter task title" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-input" id="description" name="description" placeholder="Task details" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="due_date">Due Date</label>
+                <input class="form-input" type="date" id="due_date" name="due_date">
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save Task</button>
+                <a href="{{ url_for('index') }}" class="btn">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Task Manager</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+<body>
+    <div class="container grid-lg">
+        <header class="navbar bg-primary p-2 my-2">
+            <section class="navbar-section">
+                <a href="{{ url_for('index') }}" class="navbar-brand text-bold text-light mr-2">Task Manager</a>
+            </section>
+            <section class="navbar-section">
+                <a href="{{ url_for('new_task') }}" class="btn btn-link text-light">New Task</a>
+            </section>
+        </header>
+
+        <div class="toast-container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="toast toast-{{ category }} my-2">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <main class="content py-2">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="py-2 text-center text-gray">
+            <p>Flask Task Manager - A Simple Demo App</p>
+        </footer>
+    </div>
+</body>
+</html>
