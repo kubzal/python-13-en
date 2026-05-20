@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if subtitle %}{{ subtitle }} - {% endif %}Library 3.0</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <style>
+        .navbar-center h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 2em;
+            color: #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="{{ url_for('index') }}" class="btn btn-link">Home</a>
+                <a href="{{ url_for('add_book') }}" class="btn btn-link">Add Book</a>
+                <a href="{{ url_for('borrow_book') }}" class="btn btn-link">Borrow book</a>
+                <a href="{{ url_for('books_list') }}" class="btn btn-link">Books list</a>
+            </section>
+            <section class="navbar-center">
+            <h1>Library 3.0</h1>
+            </section>
+            <section class="navbar-section">
+                <a href="{{ url_for('operations_history') }}" class="btn btn-link">Operations history</a>
+            </section>
+        </header>
+        <main>
+        {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>
